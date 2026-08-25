@@ -406,9 +406,7 @@ def has_any_role(
 # ============================================================
 # SIDEBAR USER STATUS
 # ============================================================
-
 def show_user_sidebar():
-
     user = current_user()
 
     if not user:
@@ -416,11 +414,59 @@ def show_user_sidebar():
 
     with st.sidebar:
 
+        # ====================================================
+        # CHPP-PIS NAVIGATION
+        # ====================================================
+
+        st.markdown("## 🏭 CHPP-PIS")
+        st.caption("Production Intelligence System")
+
         st.divider()
 
-        st.markdown(
-            "### SIGNED IN"
+        st.markdown("### 📌 Navigation")
+
+        st.page_link(
+            "app.py",
+            label="🏠 Home"
         )
+
+        st.page_link(
+            "pages/01_Production_Input.py",
+            label="📝 Production Input"
+        )
+
+        st.page_link(
+            "pages/2_Production_KPIs.py",
+            label="📊 Production KPIs"
+        )
+
+        st.page_link(
+            "pages/03_Equipment_Intelligence.py",
+            label="⚙️ Equipment Intelligence"
+        )
+
+        st.page_link(
+            "pages/04_Production_Analytics.py",
+            label="📈 Production Analytics"
+        )
+
+        st.page_link(
+            "pages/05_Management_Intelligence.py",
+            label="🧠 Management Intelligence"
+        )
+
+        st.page_link(
+            "pages/06_User_Management.py",
+            label="👥 User Management"
+        )
+
+        # ====================================================
+        # USER STATUS
+        # ====================================================
+
+        st.divider()
+
+        st.markdown("### 👤 SIGNED IN")
 
         st.success(
             f"👤 {user.get('full_name') or user.get('username')}"
@@ -434,9 +480,12 @@ def show_user_sidebar():
             f"Role: {user.get('role')}"
         )
 
+        # ====================================================
+        # LOGOUT
+        # ====================================================
+
         if st.button(
             "↪ Logout",
             use_container_width=True
         ):
-
             logout()
