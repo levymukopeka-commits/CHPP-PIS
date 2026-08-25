@@ -104,6 +104,14 @@ st.markdown(
         font-weight: 750;
         margin-bottom: 0.15rem;
     }
+        .developer-credit {
+        color: #60a5fa;
+        font-size: 0.78rem;
+        font-weight: 500;
+        margin-top: 0.15rem;
+        margin-bottom: 1.2rem;
+        letter-spacing: 0.02em;
+    }
 
     .page-subtitle {
         color: #9ca3af;
@@ -195,6 +203,10 @@ st.markdown(
 
 st.markdown(
     '<div class="page-title">📝 Production Input</div>',
+    unsafe_allow_html=True,
+)
+st.markdown(
+    '<div class="developer-credit">Designed & Developed by Levy Mukopeka</div>',
     unsafe_allow_html=True,
 )
 
