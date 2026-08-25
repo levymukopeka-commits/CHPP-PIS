@@ -507,6 +507,7 @@ def calculate_period_kpis(period_df):
     fines = period_df["fines"].sum()
 
     clean_coal = peas + nuts
+    ultrafines = dmc_feed - clean_coal - rejects
 
     # Total time
     planned_hours = period_df["planned_hours"].sum()
@@ -634,6 +635,7 @@ def calculate_period_kpis(period_df):
         "rejects": rejects,
         "fines": fines,
         "clean_coal": clean_coal,
+        "ultrafines": ultrafines,
         "planned_hours": planned_hours,
         "feeder_running": feeder_running,
         "dmc_running": dmc_running,
@@ -1313,7 +1315,7 @@ with b3:
 with b4:
     st.metric(
         "Ultrafines",
-        f'{period_kpi["fines"]:,.0f} t',
+        f'{period_kpi["ultrafines"]:.0f} t',
     )
 
 
@@ -1643,7 +1645,7 @@ with st.expander("View detailed KPI values"):
             "Peas",
             "Nuts",
             "Rejects",
-            "Fines / Ultrafines",
+            "Fines Belt",
             "Feeder Throughput",
             "DMC Throughput",
             "Feeder Availability",

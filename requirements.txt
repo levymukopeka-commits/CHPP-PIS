@@ -2,4 +2,3 @@ streamlit
 supabase
 python-dotenv
 pandas
-plotly

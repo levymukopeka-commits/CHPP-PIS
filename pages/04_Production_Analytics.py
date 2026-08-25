@@ -85,11 +85,12 @@ FIELD_ALIASES = {
         "production_day",
     ],
     "dmc_feed_tons": [
-        "dmc_feed_tons",
-        "dmc_feed",
-        "feed_tons",
-        "dmc_feed_tonnes",
-    ],
+    "dmc_feed_tons",
+    "dmc_feed",
+    "feed_tons",
+    "dmc_feed_tonnes",
+    "feed_to_dmc_tons",
+],
     "clean_coal_tons": [
         "clean_coal_tons",
         "clean_coal",
@@ -116,14 +117,11 @@ FIELD_ALIASES = {
         "rejects_tonnes",
     ],
     "fines_tons": [
-        "fines_tons",
-        "fines",
-        "fines_belt_tons",
-        "fines_belt",
-        "ultrafines_tons",
-        "ultrafines",
-        "ultrafines_tonnes",
-    ],
+    "fines_tons",
+    "fines",
+    "fines_belt_tons",
+    "fines_belt",
+],
     "feeder_tons": [
         "feeder_tons",
         "feeder_production_tons",
@@ -664,6 +662,9 @@ peas = aggregate_sum(period_df, field_map, "peas_tons")
 nuts = aggregate_sum(period_df, field_map, "nuts_tons")
 rejects = aggregate_sum(period_df, field_map, "rejects_tons")
 fines = aggregate_sum(period_df, field_map, "fines_tons")
+ultrafines = None
+if dmc_feed is not None and clean_coal is not None and rejects is not None:
+    ultrafines = dmc_feed - clean_coal - rejects
 
 # If clean coal is not explicitly stored but Peas and Nuts are present,
 # derive clean coal strictly from those actual streams.
@@ -788,7 +789,7 @@ with cards2[0]:
 
 with cards2[1]:
     metric_card(
-        "Fines / Ultrafines",
+        "Fines Belt",
         fmt_tons(fines),
         "Recorded production stream",
     )
@@ -892,7 +893,7 @@ balance = pd.DataFrame(
             "Peas",
             "Nuts",
             "Rejects",
-            "Fines / Ultrafines",
+            "Ultrafines",
         ],
         "Tonnes": [
             dmc_feed if dmc_feed is not None else 0,
@@ -900,7 +901,7 @@ balance = pd.DataFrame(
             peas if peas is not None else 0,
             nuts if nuts is not None else 0,
             rejects if rejects is not None else 0,
-            fines if fines is not None else 0,
+            ultrafines if ultrafines is not None else 0,
         ],
     }
 )
@@ -1055,7 +1056,7 @@ else:
         "peas_tons": "Peas",
         "nuts_tons": "Nuts",
         "rejects_tons": "Rejects",
-        "fines_tons": "Fines / Ultrafines",
+        "fines_tons": "Fines Belt",
     }
 
     if available_trend_cols:
