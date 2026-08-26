@@ -209,6 +209,13 @@ st.markdown(
             margin: 0;
             line-height: 1.1;
         }
+        .chpp-trademark {
+    color: #60a5fa;
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 8px;
+    margin-bottom: 4px;
+}
 
         .hero-subtitle {
             color: #8d98a8;
@@ -861,10 +868,15 @@ st.markdown(
     <div class="hero">
         <div>
             <div class="hero-title">⚙️ CHPP Equipment Intelligence</div>
-            <div class="hero-subtitle">
-                Equipment effectiveness • downtime • availability • utilisation
-                • throughput performance
-            </div>
+
+<div class="chpp-trademark">
+    Designed & Developed by Levy Mukopeka
+</div>
+
+<div class="hero-subtitle">
+    Equipment effectiveness • downtime • availability • utilisation
+    • throughput performance
+</div>
         </div>
         <div class="status">● SYSTEM ONLINE</div>
     </div>

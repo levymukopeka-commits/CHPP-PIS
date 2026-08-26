@@ -571,10 +571,16 @@ with top_left:
         '<div class="main-title">📈 CHPP Production Analytics</div>',
         unsafe_allow_html=True,
     )
+
+    st.markdown(
+        '<div class="chpp-trademark">Designed & Developed by Levy Mukopeka</div>',
+        unsafe_allow_html=True,
+    )
+
     st.markdown(
         '<div class="subtitle">'
         "Production trends • clean-coal streams • recovery • capacity performance"
-        "</div>",
+        '</div>',
         unsafe_allow_html=True,
     )
 

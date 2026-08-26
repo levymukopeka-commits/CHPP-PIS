@@ -973,9 +973,15 @@ top_left, top_right = st.columns(
 
 with top_left:
     st.markdown(
-        '<div class="main-title">🧭 CHPP Management Intelligence</div>',
+        '<div class="main-title">🧠 CHPP Management Intelligence</div>',
         unsafe_allow_html=True,
     )
+
+    st.markdown(
+        '<div class="chpp-trademark">Designed & Developed by Levy Mukopeka</div>',
+        unsafe_allow_html=True,
+    )
+
     st.markdown(
         '<div class="subtitle">'
         'Management decision support • production performance • '

@@ -851,6 +851,10 @@ title_col, status_col = st.columns([7, 1])
 
 with title_col:
     st.title("🏭 CHPP Production Intelligence")
+    st.markdown(
+    '<div class="chpp-trademark">Designed & Developed by Levy Mukopeka</div>',
+    unsafe_allow_html=True
+)
     st.caption(
         "Daily plant performance • equipment effectiveness • "
         "production analytics"
